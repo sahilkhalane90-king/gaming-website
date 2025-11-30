@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GameZone - Ultimate Gaming Platform</title>
+    <title>GameZone - Play Games Now</title>
     <style>
         * {
             margin: 0;
@@ -45,111 +45,60 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            cursor: pointer;
         }
         
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 2.5rem;
-        }
-        
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            transition: color 0.3s;
-            font-weight: 500;
-        }
-        
-        nav a:hover {
-            color: #ff6b35;
+        .back-button {
+            background: linear-gradient(135deg, #ff6b35, #f7931e);
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            display: none;
         }
         
         .hero {
             background: linear-gradient(135deg, #1a1f3a 0%, #0a0e27 100%);
-            padding: 180px 2rem 100px;
+            padding: 150px 2rem 80px;
             text-align: center;
             margin-top: 70px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><circle cx="100" cy="100" r="3" fill="%23ff6b35" opacity="0.3"/><circle cx="300" cy="200" r="2" fill="%23f7931e" opacity="0.3"/><circle cx="500" cy="150" r="3" fill="%23ff6b35" opacity="0.3"/><circle cx="700" cy="250" r="2" fill="%23f7931e" opacity="0.3"/><circle cx="900" cy="100" r="3" fill="%23ff6b35" opacity="0.3"/><circle cx="1100" cy="200" r="2" fill="%23f7931e" opacity="0.3"/></svg>');
-            opacity: 0.5;
         }
         
         .hero h1 {
-            font-size: 4rem;
+            font-size: 3.5rem;
             margin-bottom: 1rem;
             background: linear-gradient(135deg, #ff6b35, #f7931e);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            position: relative;
         }
         
         .hero p {
-            font-size: 1.5rem;
-            margin-bottom: 2.5rem;
+            font-size: 1.3rem;
             color: #b8c1ec;
-            position: relative;
-        }
-        
-        .cta-button {
-            background: linear-gradient(135deg, #ff6b35, #f7931e);
-            color: white;
-            padding: 1.2rem 3rem;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-            text-decoration: none;
-            display: inline-block;
-            position: relative;
-        }
-        
-        .cta-button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(255, 107, 53, 0.4);
         }
         
         .container {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 5rem 2rem;
-        }
-        
-        .section-title {
-            text-align: center;
-            font-size: 3rem;
-            margin-bottom: 3rem;
-            background: linear-gradient(135deg, #ff6b35, #f7931e);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            padding: 3rem 2rem;
         }
         
         .games-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2.5rem;
-            margin-bottom: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
         }
         
         .game-card {
             background: linear-gradient(135deg, #1a1f3a, #0f1229);
             border-radius: 20px;
             overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: transform 0.3s;
             border: 1px solid rgba(255, 107, 53, 0.2);
+            cursor: pointer;
         }
         
         .game-card:hover {
@@ -159,7 +108,7 @@
         
         .game-image {
             width: 100%;
-            height: 200px;
+            height: 180px;
             background: linear-gradient(135deg, #ff6b35, #f7931e);
             display: flex;
             align-items: center;
@@ -168,43 +117,31 @@
         }
         
         .game-content {
-            padding: 2rem;
+            padding: 1.5rem;
         }
         
         .game-content h3 {
             color: #ff6b35;
-            margin-bottom: 1rem;
-            font-size: 1.8rem;
+            margin-bottom: 0.8rem;
+            font-size: 1.5rem;
         }
         
         .game-content p {
             color: #b8c1ec;
-            margin-bottom: 1.5rem;
-        }
-        
-        .game-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 1.5rem;
-        }
-        
-        .game-genre {
-            background: rgba(255, 107, 53, 0.2);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            color: #ff6b35;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
         }
         
         .play-button {
             background: linear-gradient(135deg, #ff6b35, #f7931e);
             color: white;
-            padding: 0.7rem 1.5rem;
+            padding: 0.8rem 2rem;
             border: none;
             border-radius: 25px;
             cursor: pointer;
             font-weight: bold;
+            width: 100%;
+            font-size: 1.1rem;
             transition: transform 0.3s;
         }
         
@@ -212,114 +149,143 @@
             transform: scale(1.05);
         }
         
-        .features {
-            background: #0f1229;
-            padding: 5rem 2rem;
-        }
-        
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 3rem;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-        
-        .feature-card {
-            text-align: center;
+        .game-container {
+            display: none;
+            max-width: 900px;
+            margin: 100px auto 50px;
             padding: 2rem;
-            background: linear-gradient(135deg, #1a1f3a, #0a0e27);
-            border-radius: 15px;
-            border: 1px solid rgba(255, 107, 53, 0.2);
-            transition: transform 0.3s;
         }
         
-        .feature-card:hover {
-            transform: translateY(-10px);
+        .game-container.active {
+            display: block;
         }
         
-        .feature-icon {
-            font-size: 4rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .feature-card h3 {
+        .game-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
             color: #ff6b35;
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
         }
         
-        .feature-card p {
+        canvas {
+            display: block;
+            margin: 0 auto;
+            background: #1a1f3a;
+            border: 3px solid #ff6b35;
+            border-radius: 10px;
+        }
+        
+        .game-info {
+            text-align: center;
+            margin-top: 1.5rem;
+            font-size: 1.3rem;
             color: #b8c1ec;
         }
         
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin: 4rem 0;
-        }
-        
-        .stat-card {
+        .game-controls {
             text-align: center;
-            padding: 2rem;
-            background: linear-gradient(135deg, #1a1f3a, #0f1229);
-            border-radius: 15px;
-            border: 2px solid #ff6b35;
+            margin-top: 1.5rem;
+            color: #b8c1ec;
         }
         
-        .stat-number {
-            font-size: 3rem;
+        .control-button {
+            background: linear-gradient(135deg, #ff6b35, #f7931e);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
             font-weight: bold;
-            color: #ff6b35;
-            margin-bottom: 0.5rem;
-        }
-        
-        .stat-label {
-            color: #b8c1ec;
             font-size: 1.1rem;
+            margin: 0.5rem;
         }
         
-        footer {
-            background: #0a0e27;
-            text-align: center;
-            padding: 3rem 2rem;
-            border-top: 2px solid #ff6b35;
+        #home-section {
+            display: block;
         }
         
-        .footer-content {
-            max-width: 1400px;
-            margin: 0 auto;
+        #home-section.hidden {
+            display: none;
         }
         
-        .social-links {
+        .puzzle-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 100px);
+            gap: 5px;
+            margin: 2rem auto;
+            width: fit-content;
+        }
+        
+        .puzzle-tile {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #ff6b35, #f7931e);
+            border: 2px solid #0a0e27;
+            border-radius: 10px;
             display: flex;
+            align-items: center;
             justify-content: center;
-            gap: 2rem;
-            margin: 2rem 0;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s;
         }
         
-        .social-links a {
-            color: #ff6b35;
-            font-size: 2rem;
+        .puzzle-tile:hover {
+            transform: scale(1.05);
+        }
+        
+        .puzzle-tile.empty {
+            background: #0a0e27;
+            cursor: default;
+        }
+        
+        .memory-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 100px);
+            gap: 10px;
+            margin: 2rem auto;
+            width: fit-content;
+        }
+        
+        .memory-card {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #1a1f3a, #0f1229);
+            border: 2px solid #ff6b35;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            cursor: pointer;
             transition: transform 0.3s;
         }
         
-        .social-links a:hover {
-            transform: scale(1.2);
+        .memory-card:hover {
+            transform: scale(1.05);
+        }
+        
+        .memory-card.flipped {
+            background: linear-gradient(135deg, #ff6b35, #f7931e);
+        }
+        
+        .memory-card.matched {
+            background: #2ecc71;
+            cursor: default;
         }
         
         @media (max-width: 768px) {
             .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            nav ul {
-                gap: 1rem;
+                font-size: 2rem;
             }
             
             .games-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            canvas {
+                max-width: 100%;
             }
         }
     </style>
@@ -327,183 +293,619 @@
 <body>
     <header>
         <nav>
-            <div class="logo">🎮 GameZone</div>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#games">Games</a></li>
-                <li><a href="#features">Features</a></li>
-                <li><a href="#community">Community</a></li>
-            </ul>
+            <div class="logo" onclick="goHome()">🎮 GameZone</div>
+            <button class="back-button" id="backButton" onclick="goHome()">← Back to Games</button>
         </nav>
     </header>
 
-    <section id="home" class="hero">
-        <h1>Welcome to GameZone</h1>
-        <p>Your Ultimate Gaming Destination</p>
-        <a href="#games" class="cta-button">Start Playing Now</a>
-    </section>
+    <div id="home-section">
+        <section class="hero">
+            <h1>Play Games Now!</h1>
+            <p>Choose a game and start playing instantly</p>
+        </section>
 
-    <section id="games" class="container">
-        <h2 class="section-title">Featured Games</h2>
-        <div class="games-grid">
-            <div class="game-card">
-                <div class="game-image">🏎️</div>
-                <div class="game-content">
-                    <h3>Speed Racer</h3>
-                    <p>Experience high-octane racing action with stunning graphics and realistic physics.</p>
-                    <div class="game-meta">
-                        <span class="game-genre">Racing</span>
+        <section class="container">
+            <div class="games-grid">
+                <div class="game-card" onclick="startGame('snake')">
+                    <div class="game-image">🐍</div>
+                    <div class="game-content">
+                        <h3>Snake Game</h3>
+                        <p>Classic snake game! Eat food, grow longer, and avoid hitting yourself.</p>
+                        <button class="play-button">Play Now</button>
+                    </div>
+                </div>
+                
+                <div class="game-card" onclick="startGame('pong')">
+                    <div class="game-image">🏓</div>
+                    <div class="game-content">
+                        <h3>Pong</h3>
+                        <p>Classic arcade pong! Move your paddle and don't let the ball pass.</p>
+                        <button class="play-button">Play Now</button>
+                    </div>
+                </div>
+                
+                <div class="game-card" onclick="startGame('breakout')">
+                    <div class="game-image">🧱</div>
+                    <div class="game-content">
+                        <h3>Breakout</h3>
+                        <p>Break all the bricks with your ball! Classic brick breaker game.</p>
+                        <button class="play-button">Play Now</button>
+                    </div>
+                </div>
+                
+                <div class="game-card" onclick="startGame('flappy')">
+                    <div class="game-image">🐦</div>
+                    <div class="game-content">
+                        <h3>Flappy Bird</h3>
+                        <p>Tap to fly! Navigate through pipes and beat your high score.</p>
+                        <button class="play-button">Play Now</button>
+                    </div>
+                </div>
+                
+                <div class="game-card" onclick="startGame('puzzle')">
+                    <div class="game-image">🧩</div>
+                    <div class="game-content">
+                        <h3>Sliding Puzzle</h3>
+                        <p>Arrange the numbers in order! Classic 15-puzzle game.</p>
+                        <button class="play-button">Play Now</button>
+                    </div>
+                </div>
+                
+                <div class="game-card" onclick="startGame('memory')">
+                    <div class="game-image">🎴</div>
+                    <div class="game-content">
+                        <h3>Memory Match</h3>
+                        <p>Find matching pairs! Test your memory skills.</p>
                         <button class="play-button">Play Now</button>
                     </div>
                 </div>
             </div>
-            
-            <div class="game-card">
-                <div class="game-image">⚔️</div>
-                <div class="game-content">
-                    <h3>Battle Legends</h3>
-                    <p>Epic multiplayer battles in a fantasy world. Team up and conquer your enemies!</p>
-                    <div class="game-meta">
-                        <span class="game-genre">Action</span>
-                        <button class="play-button">Play Now</button>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="game-card">
-                <div class="game-image">🧩</div>
-                <div class="game-content">
-                    <h3>Puzzle Master</h3>
-                    <p>Challenge your mind with hundreds of brain-teasing puzzles and riddles.</p>
-                    <div class="game-meta">
-                        <span class="game-genre">Puzzle</span>
-                        <button class="play-button">Play Now</button>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="game-card">
-                <div class="game-image">🚀</div>
-                <div class="game-content">
-                    <h3>Space Explorer</h3>
-                    <p>Explore the vast universe, discover new planets, and build your space empire.</p>
-                    <div class="game-meta">
-                        <span class="game-genre">Adventure</span>
-                        <button class="play-button">Play Now</button>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="game-card">
-                <div class="game-image">⚽</div>
-                <div class="game-content">
-                    <h3>Soccer Champions</h3>
-                    <p>Lead your team to victory in the most realistic soccer simulation game.</p>
-                    <div class="game-meta">
-                        <span class="game-genre">Sports</span>
-                        <button class="play-button">Play Now</button>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="game-card">
-                <div class="game-image">🎯</div>
-                <div class="game-content">
-                    <h3>Sniper Elite</h3>
-                    <p>Test your precision and strategy in intense tactical shooter missions.</p>
-                    <div class="game-meta">
-                        <span class="game-genre">Shooter</span>
-                        <button class="play-button">Play Now</button>
-                    </div>
-                </div>
-            </div>
+        </section>
+    </div>
+
+    <!-- Snake Game -->
+    <div id="snake-game" class="game-container">
+        <h2 class="game-title">🐍 Snake Game</h2>
+        <div class="game-info">Score: <span id="snake-score">0</span></div>
+        <canvas id="snakeCanvas" width="400" height="400"></canvas>
+        <div class="game-controls">
+            <p>Use Arrow Keys to move</p>
+            <button class="control-button" onclick="resetSnake()">Restart</button>
         </div>
+    </div>
+
+    <!-- Pong Game -->
+    <div id="pong-game" class="game-container">
+        <h2 class="game-title">🏓 Pong</h2>
+        <div class="game-info">Score: <span id="pong-score">0</span></div>
+        <canvas id="pongCanvas" width="600" height="400"></canvas>
+        <div class="game-controls">
+            <p>Use Arrow Keys (↑↓) to move paddle</p>
+            <button class="control-button" onclick="resetPong()">Restart</button>
+        </div>
+    </div>
+
+    <!-- Breakout Game -->
+    <div id="breakout-game" class="game-container">
+        <h2 class="game-title">🧱 Breakout</h2>
+        <div class="game-info">Score: <span id="breakout-score">0</span> | Lives: <span id="breakout-lives">3</span></div>
+        <canvas id="breakoutCanvas" width="600" height="400"></canvas>
+        <div class="game-controls">
+            <p>Use Arrow Keys (←→) or Mouse to move paddle</p>
+            <button class="control-button" onclick="resetBreakout()">Restart</button>
+        </div>
+    </div>
+
+    <!-- Flappy Bird Game -->
+    <div id="flappy-game" class="game-container">
+        <h2 class="game-title">🐦 Flappy Bird</h2>
+        <div class="game-info">Score: <span id="flappy-score">0</span></div>
+        <canvas id="flappyCanvas" width="400" height="600"></canvas>
+        <div class="game-controls">
+            <p>Press SPACE or Click to Flap</p>
+            <button class="control-button" onclick="resetFlappy()">Restart</button>
+        </div>
+    </div>
+
+    <!-- Sliding Puzzle Game -->
+    <div id="puzzle-game" class="game-container">
+        <h2 class="game-title">🧩 Sliding Puzzle</h2>
+        <div class="game-info">Moves: <span id="puzzle-moves">0</span></div>
+        <div id="puzzleGrid" class="puzzle-grid"></div>
+        <div class="game-controls">
+            <button class="control-button" onclick="resetPuzzle()">Shuffle</button>
+        </div>
+    </div>
+
+    <!-- Memory Match Game -->
+    <div id="memory-game" class="game-container">
+        <h2 class="game-title">🎴 Memory Match</h2>
+        <div class="game-info">Pairs Found: <span id="memory-score">0</span> / 8 | Moves: <span id="memory-moves">0</span></div>
+        <div id="memoryGrid" class="memory-grid"></div>
+        <div class="game-controls">
+            <button class="control-button" onclick="resetMemory()">New Game</button>
+        </div>
+    </div>
+
+    <script>
+        let currentGame = null;
+
+        function goHome() {
+            document.getElementById('home-section').classList.remove('hidden');
+            document.getElementById('backButton').style.display = 'none';
+            if (currentGame) {
+                document.getElementById(currentGame + '-game').classList.remove('active');
+            }
+            currentGame = null;
+        }
+
+        function startGame(game) {
+            document.getElementById('home-section').classList.add('hidden');
+            document.getElementById('backButton').style.display = 'block';
+            document.getElementById(game + '-game').classList.add('active');
+            currentGame = game;
+            
+            if (game === 'snake') initSnake();
+            else if (game === 'pong') initPong();
+            else if (game === 'breakout') initBreakout();
+            else if (game === 'flappy') initFlappy();
+            else if (game === 'puzzle') initPuzzle();
+            else if (game === 'memory') initMemory();
+        }
+
+        // SNAKE GAME
+        let snake, snakeDir, snakeFood, snakeScore, snakeGameOver;
+        function initSnake() {
+            const canvas = document.getElementById('snakeCanvas');
+            const ctx = canvas.getContext('2d');
+            const gridSize = 20;
+            snake = [{x: 10, y: 10}];
+            snakeDir = {x: 1, y: 0};
+            snakeFood = {x: 15, y: 15};
+            snakeScore = 0;
+            snakeGameOver = false;
+            document.getElementById('snake-score').textContent = snakeScore;
+            
+            document.onkeydown = (e) => {
+                if (currentGame !== 'snake') return;
+                if (e.key === 'ArrowUp' && snakeDir.y === 0) snakeDir = {x: 0, y: -1};
+                if (e.key === 'ArrowDown' && snakeDir.y === 0) snakeDir = {x: 0, y: 1};
+                if (e.key === 'ArrowLeft' && snakeDir.x === 0) snakeDir = {x: -1, y: 0};
+                if (e.key === 'ArrowRight' && snakeDir.x === 0) snakeDir = {x: 1, y: 0};
+            };
+            
+            function gameLoop() {
+                if (snakeGameOver || currentGame !== 'snake') return;
+                
+                const head = {x: snake[0].x + snakeDir.x, y: snake[0].y + snakeDir.y};
+                
+                if (head.x < 0 || head.x >= 20 || head.y < 0 || head.y >= 20 || 
+                    snake.some(s => s.x === head.x && s.y === head.y)) {
+                    snakeGameOver = true;
+                    ctx.fillStyle = '#ff6b35';
+                    ctx.font = '30px Arial';
+                    ctx.fillText('Game Over!', 120, 200);
+                    return;
+                }
+                
+                snake.unshift(head);
+                
+                if (head.x === snakeFood.x && head.y === snakeFood.y) {
+                    snakeScore++;
+                    document.getElementById('snake-score').textContent = snakeScore;
+                    snakeFood = {
+                        x: Math.floor(Math.random() * 20),
+                        y: Math.floor(Math.random() * 20)
+                    };
+                } else {
+                    snake.pop();
+                }
+                
+                ctx.fillStyle = '#1a1f3a';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                
+                ctx.fillStyle = '#ff6b35';
+                snake.forEach(s => ctx.fillRect(s.x * gridSize, s.y * gridSize, gridSize - 2, gridSize - 2));
+                
+                ctx.fillStyle = '#f7931e';
+                ctx.fillRect(snakeFood.x * gridSize, snakeFood.y * gridSize, gridSize - 2, gridSize - 2);
+                
+                setTimeout(gameLoop, 150);
+            }
+            gameLoop();
+        }
         
-        <div class="stats">
-            <div class="stat-card">
-                <div class="stat-number">10M+</div>
-                <div class="stat-label">Active Players</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">500+</div>
-                <div class="stat-label">Games Available</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">24/7</div>
-                <div class="stat-label">Online Support</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">150+</div>
-                <div class="stat-label">Countries</div>
-            </div>
-        </div>
-    </section>
+        function resetSnake() {
+            initSnake();
+        }
 
-    <section id="features" class="features">
-        <div class="container">
-            <h2 class="section-title">Why Choose GameZone?</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">🎮</div>
-                    <h3>Massive Game Library</h3>
-                    <p>Access over 500 games across all genres. New titles added weekly!</p>
-                </div>
+        // PONG GAME
+        let pongPaddle, pongBall, pongScore, pongGameOver;
+        function initPong() {
+            const canvas = document.getElementById('pongCanvas');
+            const ctx = canvas.getContext('2d');
+            pongPaddle = {x: 580, y: 160, width: 10, height: 80};
+            pongBall = {x: 300, y: 200, dx: 3, dy: 3, radius: 8};
+            pongScore = 0;
+            pongGameOver = false;
+            document.getElementById('pong-score').textContent = pongScore;
+            
+            document.onkeydown = (e) => {
+                if (currentGame !== 'pong') return;
+                if (e.key === 'ArrowUp' && pongPaddle.y > 0) pongPaddle.y -= 20;
+                if (e.key === 'ArrowDown' && pongPaddle.y < 320) pongPaddle.y += 20;
+            };
+            
+            function gameLoop() {
+                if (pongGameOver || currentGame !== 'pong') return;
                 
-                <div class="feature-card">
-                    <div class="feature-icon">👥</div>
-                    <h3>Global Community</h3>
-                    <p>Connect with millions of gamers worldwide. Make friends and compete together.</p>
-                </div>
+                pongBall.x += pongBall.dx;
+                pongBall.y += pongBall.dy;
                 
-                <div class="feature-card">
-                    <div class="feature-icon">🏆</div>
-                    <h3>Tournaments & Prizes</h3>
-                    <p>Participate in daily tournaments and win amazing prizes and rewards.</p>
-                </div>
+                if (pongBall.y - pongBall.radius < 0 || pongBall.y + pongBall.radius > 400) {
+                    pongBall.dy = -pongBall.dy;
+                }
                 
-                <div class="feature-card">
-                    <div class="feature-icon">⚡</div>
-                    <h3>Lightning Fast</h3>
-                    <p>Optimized servers ensure smooth gameplay with minimal lag.</p>
-                </div>
+                if (pongBall.x - pongBall.radius < 0) {
+                    pongBall.dx = -pongBall.dx;
+                }
                 
-                <div class="feature-card">
-                    <div class="feature-icon">🔒</div>
-                    <h3>Secure Platform</h3>
-                    <p>Your data and privacy are protected with enterprise-grade security.</p>
-                </div>
+                if (pongBall.x + pongBall.radius > pongPaddle.x && 
+                    pongBall.y > pongPaddle.y && pongBall.y < pongPaddle.y + pongPaddle.height) {
+                    pongBall.dx = -pongBall.dx;
+                    pongScore++;
+                    document.getElementById('pong-score').textContent = pongScore;
+                }
                 
-                <div class="feature-card">
-                    <div class="feature-icon">📱</div>
-                    <h3>Cross-Platform</h3>
-                    <p>Play on any device - PC, mobile, or tablet. Your progress syncs everywhere.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+                if (pongBall.x > 600) {
+                    pongGameOver = true;
+                    ctx.fillStyle = '#ff6b35';
+                    ctx.font = '30px Arial';
+                    ctx.fillText('Game Over!', 220, 200);
+                    return;
+                }
+                
+                ctx.fillStyle = '#1a1f3a';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                
+                ctx.fillStyle = '#ff6b35';
+                ctx.fillRect(pongPaddle.x, pongPaddle.y, pongPaddle.width, pongPaddle.height);
+                
+                ctx.beginPath();
+                ctx.arc(pongBall.x, pongBall.y, pongBall.radius, 0, Math.PI * 2);
+                ctx.fillStyle = '#f7931e';
+                ctx.fill();
+                ctx.closePath();
+                
+                requestAnimationFrame(gameLoop);
+            }
+            gameLoop();
+        }
+        
+        function resetPong() {
+            initPong();
+        }
 
-    <section id="community" class="container">
-        <h2 class="section-title">Join Our Community</h2>
-        <p style="text-align: center; font-size: 1.3rem; color: #b8c1ec; margin-bottom: 3rem;">
-            Connect with fellow gamers, share strategies, and stay updated with the latest gaming news!
-        </p>
-        <div style="text-align: center;">
-            <a href="#" class="cta-button">Join Discord Server</a>
-        </div>
-    </section>
+        // BREAKOUT GAME
+        let breakoutPaddle, breakoutBall, breakoutBricks, breakoutScore, breakoutLives;
+        function initBreakout() {
+            const canvas = document.getElementById('breakoutCanvas');
+            const ctx = canvas.getContext('2d');
+            breakoutPaddle = {x: 250, y: 370, width: 100, height: 10};
+            breakoutBall = {x: 300, y: 350, dx: 3, dy: -3, radius: 8};
+            breakoutScore = 0;
+            breakoutLives = 3;
+            breakoutBricks = [];
+            
+            for (let i = 0; i < 8; i++) {
+                for (let j = 0; j < 5; j++) {
+                    breakoutBricks.push({x: i * 75, y: j * 30 + 30, width: 70, height: 25, active: true});
+                }
+            }
+            
+            document.getElementById('breakout-score').textContent = breakoutScore;
+            document.getElementById('breakout-lives').textContent = breakoutLives;
+            
+            document.onkeydown = (e) => {
+                if (currentGame !== 'breakout') return;
+                if (e.key === 'ArrowLeft' && breakoutPaddle.x > 0) breakoutPaddle.x -= 30;
+                if (e.key === 'ArrowRight' && breakoutPaddle.x < 500) breakoutPaddle.x += 30;
+            };
+            
+            canvas.onmousemove = (e) => {
+                if (currentGame !== 'breakout') return;
+                const rect = canvas.getBoundingClientRect();
+                breakoutPaddle.x = e.clientX - rect.left - breakoutPaddle.width / 2;
+            };
+            
+            function gameLoop() {
+                if (currentGame !== 'breakout') return;
+                
+                breakoutBall.x += breakoutBall.dx;
+                breakoutBall.y += breakoutBall.dy;
+                
+                if (breakoutBall.x - breakoutBall.radius < 0 || breakoutBall.x + breakoutBall.radius > 600) {
+                    breakoutBall.dx = -breakoutBall.dx;
+                }
+                
+                if (breakoutBall.y - breakoutBall.radius < 0) {
+                    breakoutBall.dy = -breakoutBall.dy;
+                }
+                
+                if (breakoutBall.y + breakoutBall.radius > breakoutPaddle.y &&
+                    breakoutBall.x > breakoutPaddle.x && breakoutBall.x < breakoutPaddle.x + breakoutPaddle.width) {
+                    breakoutBall.dy = -breakoutBall.dy;
+                }
+                
+                if (breakoutBall.y > 400) {
+                    breakoutLives--;
+                    document.getElementById('breakout-lives').textContent = breakoutLives;
+                    if (breakoutLives === 0) {
+                        ctx.fillStyle = '#ff6b35';
+                        ctx.font = '30px Arial';
+                        ctx.fillText('Game Over!', 220, 200);
+                        return;
+                    }
+                    breakoutBall = {x: 300, y: 350, dx: 3, dy: -3, radius: 8};
+                }
+                
+                breakoutBricks.forEach(brick => {
+                    if (brick.active && 
+                        breakoutBall.x > brick.x && breakoutBall.x < brick.x + brick.width &&
+                        breakoutBall.y > brick.y && breakoutBall.y < brick.y + brick.height) {
+                        brick.active = false;
+                        breakoutBall.dy = -breakoutBall.dy;
+                        breakoutScore += 10;
+                        document.getElementById('breakout-score').textContent = breakoutScore;
+                    }
+                });
+                
+                ctx.fillStyle = '#1a1f3a';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                
+                ctx.fillStyle = '#ff6b35';
+                ctx.fillRect(breakoutPaddle.x, breakoutPaddle.y, breakoutPaddle.width, breakoutPaddle.height);
+                
+                ctx.beginPath();
+                ctx.arc(breakoutBall.x, breakoutBall.y, breakoutBall.radius, 0, Math.PI * 2);
+                ctx.fillStyle = '#f7931e';
+                ctx.fill();
+                ctx.closePath();
+                
+                breakoutBricks.forEach(brick => {
+                    if (brick.active) {
+                        ctx.fillStyle = '#ff6b35';
+                        ctx.fillRect(brick.x, brick.y, brick.width, brick.height);
+                    }
+                });
+                
+                requestAnimationFrame(gameLoop);
+            }
+            gameLoop();
+        }
+        
+        function resetBreakout() {
+            initBreakout();
+        }
 
-    <footer>
-        <div class="footer-content">
-            <div class="social-links">
-                <a href="#">📘</a>
-                <a href="#">🐦</a>
-                <a href="#">📷</a>
-                <a href="#">💬</a>
-                <a href="#">🎥</a>
-            </div>
-            <p style="color: #b8c1ec; margin: 1rem 0;">&copy; 2025 GameZone. All rights reserved.</p>
-            <p style="color: #ff6b35; font-weight: bold;">Level Up Your Gaming Experience</p>
-        </div>
-    </footer>
+        // FLAPPY BIRD GAME
+        let flappyBird, flappyPipes, flappyScore, flappyGameOver;
+        function initFlappy() {
+            const canvas = document.getElementById('flappyCanvas');
+            const ctx = canvas.getContext('2d');
+            flappyBird = {x: 50, y: 250, velocity: 0, radius: 15};
+            flappyPipes = [];
+            flappyScore = 0;
+            flappyGameOver = false;
+            document.getElementById('flappy-score').textContent = flappyScore;
+            
+            let pipeCounter = 0;
+            
+            function flap() {
+                if (currentGame === 'flappy' && !flappyGameOver) {
+                    flappyBird.velocity = -8;
+                }
+            }
+            
+            document.onkeydown = (e) => {
+                if (e.key === ' ') flap();
+            };
+            
+            canvas.onclick = flap;
+            
+            function gameLoop() {
+                if (flappyGameOver || currentGame !== 'flappy') return;
+                
+                flappyBird.velocity += 0.5;
+                flappyBird.y += flappyBird.velocity;
+                
+                if (flappyBird.y - flappyBird.radius < 0 || flappyBird.y + flappyBird.radius > 600) {
+                    flappyGameOver = true;
+                    ctx.fillStyle = '#ff6b35';
+                    ctx.font = '30px Arial';
+                    ctx.fillText('Game Over!', 120, 300);
+                    return;
+                }
+                
+                pipeCounter++;
+                if (pipeCounter % 90 === 0) {
+                    const gap = 150;
+                    const minHeight = 50;
+                    const maxHeight = 350;
+                    const topHeight = Math.random() * (maxHeight - minHeight) + minHeight;
+                    flappyPipes.push({x: 400, topHeight: topHeight, gap: gap, scored: false});
+                }
+                
+                flappyPipes.forEach((pipe, index) => {
+                    pipe.x -= 3;
+                    
+                    if (pipe.x + 50 < 0) {
+                        flappyPipes.splice(index, 1);
+                    }
+                    
+                    if (!pipe.scored && pipe.x + 50 < flappyBird.x) {
+                        flappyScore++;
+                        pipe.scored = true;
+                        document.getElementById('flappy-score').textContent = flappyScore;
+                    }
+                    
+                    if (flappyBird.x + flappyBird.radius > pipe.x && 
+                        flappyBird.x - flappyBird.radius < pipe.x + 50) {
+                        if (flappyBird.y - flappyBird.radius < pipe.topHeight || 
+                            flappyBird.y + flappyBird.radius > pipe.topHeight + pipe.gap) {
+                            flappyGameOver = true;
+                            ctx.fillStyle = '#ff6b35';
+                            ctx.font = '30px Arial';
+                            ctx.fillText('Game Over!', 120, 300);
+                            return;
+                        }
+                    }
+                });
+                
+                ctx.fillStyle = '#1a1f3a';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                
+                ctx.beginPath();
+                ctx.arc(flappyBird.x, flappyBird.y, flappyBird.radius, 0, Math.PI * 2);
+                ctx.fillStyle = '#f7931e';
+                ctx.fill();
+                ctx.closePath();
+                
+                ctx.fillStyle = '#ff6b35';
+                flappyPipes.forEach(pipe => {
+                    ctx.fillRect(pipe.x, 0, 50, pipe.topHeight);
+                    ctx.fillRect(pipe.x, pipe.topHeight + pipe.gap, 50, 600 - pipe.topHeight - pipe.gap);
+                });
+                
+                requestAnimationFrame(gameLoop);
+            }
+            gameLoop();
+        }
+        
+        function resetFlappy() {
+            initFlappy();
+        }
+
+        // SLIDING PUZZLE GAME
+        let puzzleTiles, puzzleMoves;
+        function initPuzzle() {
+            puzzleTiles = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 0];
+            puzzleMoves = 0;
+            shufflePuzzle();
+            renderPuzzle();
+        }
+        
+        function shufflePuzzle() {
+            for (let i = 0; i < 100; i++) {
+                const emptyIndex = puzzleTiles.indexOf(0);
+                const moves = [];
+                if (emptyIndex % 4 !== 0) moves.push(emptyIndex - 1);
+                if (emptyIndex % 4 !== 3) moves.push(emptyIndex + 1);
+                if (emptyIndex >= 4) moves.push(emptyIndex - 4);
+                if (emptyIndex < 12) moves.push(emptyIndex + 4);
+                const randomMove = moves[Math.floor(Math.random() * moves.length)];
+                [puzzleTiles[emptyIndex], puzzleTiles[randomMove]] = [puzzleTiles[randomMove], puzzleTiles[emptyIndex]];
+            }
+        }
+        
+        function renderPuzzle() {
+            const grid = document.getElementById('puzzleGrid');
+            grid.innerHTML = '';
+            puzzleTiles.forEach((tile, index) => {
+                const div = document.createElement('div');
+                div.className = 'puzzle-tile' + (tile === 0 ? ' empty' : '');
+                div.textContent = tile === 0 ? '' : tile;
+                div.onclick = () => movePuzzleTile(index);
+                grid.appendChild(div);
+            });
+            document.getElementById('puzzle-moves').textContent = puzzleMoves;
+        }
+        
+        function movePuzzleTile(index) {
+            const emptyIndex = puzzleTiles.indexOf(0);
+            const validMoves = [];
+            if (emptyIndex % 4 !== 0) validMoves.push(emptyIndex - 1);
+            if (emptyIndex % 4 !== 3) validMoves.push(emptyIndex + 1);
+            if (emptyIndex >= 4) validMoves.push(emptyIndex - 4);
+            if (emptyIndex < 12) validMoves.push(emptyIndex + 4);
+            
+            if (validMoves.includes(index)) {
+                [puzzleTiles[emptyIndex], puzzleTiles[index]] = [puzzleTiles[index], puzzleTiles[emptyIndex]];
+                puzzleMoves++;
+                renderPuzzle();
+                
+                if (puzzleTiles.every((tile, i) => tile === i || (i === 15 && tile === 0))) {
+                    setTimeout(() => alert('Congratulations! You solved it in ' + puzzleMoves + ' moves!'), 100);
+                }
+            }
+        }
+        
+        function resetPuzzle() {
+            puzzleMoves = 0;
+            shufflePuzzle();
+            renderPuzzle();
+        }
+
+        // MEMORY MATCH GAME
+        let memoryCards, memoryFlipped, memoryMatched, memoryMoves;
+        function initMemory() {
+            const symbols = ['🎮', '🎯', '🎲', '🎪', '🎨', '🎭', '🎸', '🎺'];
+            memoryCards = [...symbols, ...symbols].sort(() => Math.random() - 0.5);
+            memoryFlipped = [];
+            memoryMatched = [];
+            memoryMoves = 0;
+            renderMemory();
+        }
+        
+        function renderMemory() {
+            const grid = document.getElementById('memoryGrid');
+            grid.innerHTML = '';
+            memoryCards.forEach((symbol, index) => {
+                const div = document.createElement('div');
+                div.className = 'memory-card';
+                if (memoryFlipped.includes(index) || memoryMatched.includes(index)) {
+                    div.textContent = symbol;
+                    div.classList.add('flipped');
+                }
+                if (memoryMatched.includes(index)) {
+                    div.classList.add('matched');
+                }
+                div.onclick = () => flipMemoryCard(index);
+                grid.appendChild(div);
+            });
+            document.getElementById('memory-score').textContent = memoryMatched.length / 2;
+            document.getElementById('memory-moves').textContent = memoryMoves;
+        }
+        
+        function flipMemoryCard(index) {
+            if (memoryFlipped.length === 2 || memoryFlipped.includes(index) || memoryMatched.includes(index)) return;
+            
+            memoryFlipped.push(index);
+            renderMemory();
+            
+            if (memoryFlipped.length === 2) {
+                memoryMoves++;
+                const [first, second] = memoryFlipped;
+                if (memoryCards[first] === memoryCards[second]) {
+                    memoryMatched.push(first, second);
+                    memoryFlipped = [];
+                    renderMemory();
+                    
+                    if (memoryMatched.length === 16) {
+                        setTimeout(() => alert('Congratulations! You won in ' + memoryMoves + ' moves!'), 100);
+                    }
+                } else {
+                    setTimeout(() => {
+                        memoryFlipped = [];
+                        renderMemory();
+                    }, 1000);
+                }
+            }
+        }
+        
+        function resetMemory() {
+            initMemory();
+        }
+    </script>
 </body>
 </html>
