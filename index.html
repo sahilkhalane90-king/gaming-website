@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameZone - Ultimate Gaming Platform</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0a0e27;
+            color: #fff;
+            line-height: 1.6;
+        }
+        
+        header {
+            background: rgba(10, 14, 39, 0.95);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid #ff6b35;
+            backdrop-filter: blur(10px);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #ff6b35, #f7931e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+        
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+        
+        nav a:hover {
+            color: #ff6b35;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, #1a1f3a 0%, #0a0e27 100%);
+            padding: 180px 2rem 100px;
+            text-align: center;
+            margin-top: 70px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><circle cx="100" cy="100" r="3" fill="%23ff6b35" opacity="0.3"/><circle cx="300" cy="200" r="2" fill="%23f7931e" opacity="0.3"/><circle cx="500" cy="150" r="3" fill="%23ff6b35" opacity="0.3"/><circle cx="700" cy="250" r="2" fill="%23f7931e" opacity="0.3"/><circle cx="900" cy="100" r="3" fill="%23ff6b35" opacity="0.3"/><circle cx="1100" cy="200" r="2" fill="%23f7931e" opacity="0.3"/></svg>');
+            opacity: 0.5;
+        }
+        
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #ff6b35, #f7931e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+        }
+        
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2.5rem;
+            color: #b8c1ec;
+            position: relative;
+        }
+        
+        .cta-button {
+            background: linear-gradient(135deg, #ff6b35, #f7931e);
+            color: white;
+            padding: 1.2rem 3rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(255, 107, 53, 0.4);
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, #ff6b35, #f7931e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .game-card {
+            background: linear-gradient(135deg, #1a1f3a, #0f1229);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid rgba(255, 107, 53, 0.2);
+        }
+        
+        .game-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(255, 107, 53, 0.3);
+        }
+        
+        .game-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #ff6b35, #f7931e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+        
+        .game-content {
+            padding: 2rem;
+        }
+        
+        .game-content h3 {
+            color: #ff6b35;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+        
+        .game-content p {
+            color: #b8c1ec;
+            margin-bottom: 1.5rem;
+        }
+        
+        .game-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1.5rem;
+        }
+        
+        .game-genre {
+            background: rgba(255, 107, 53, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: #ff6b35;
+        }
+        
+        .play-button {
+            background: linear-gradient(135deg, #ff6b35, #f7931e);
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+        
+        .play-button:hover {
+            transform: scale(1.05);
+        }
+        
+        .features {
+            background: #0f1229;
+            padding: 5rem 2rem;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .feature-card {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, #1a1f3a, #0a0e27);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 107, 53, 0.2);
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .feature-card h3 {
+            color: #ff6b35;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .feature-card p {
+            color: #b8c1ec;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+        
+        .stat-card {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, #1a1f3a, #0f1229);
+            border-radius: 15px;
+            border: 2px solid #ff6b35;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #ff6b35;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            color: #b8c1ec;
+            font-size: 1.1rem;
+        }
+        
+        footer {
+            background: #0a0e27;
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 2px solid #ff6b35;
+        }
+        
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .social-links a {
+            color: #ff6b35;
+            font-size: 2rem;
+            transition: transform 0.3s;
+        }
+        
+        .social-links a:hover {
+            transform: scale(1.2);
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            nav ul {
+                gap: 1rem;
+            }
+            
+            .games-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">🎮 GameZone</div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#games">Games</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#community">Community</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <h1>Welcome to GameZone</h1>
+        <p>Your Ultimate Gaming Destination</p>
+        <a href="#games" class="cta-button">Start Playing Now</a>
+    </section>
+
+    <section id="games" class="container">
+        <h2 class="section-title">Featured Games</h2>
+        <div class="games-grid">
+            <div class="game-card">
+                <div class="game-image">🏎️</div>
+                <div class="game-content">
+                    <h3>Speed Racer</h3>
+                    <p>Experience high-octane racing action with stunning graphics and realistic physics.</p>
+                    <div class="game-meta">
+                        <span class="game-genre">Racing</span>
+                        <button class="play-button">Play Now</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="game-card">
+                <div class="game-image">⚔️</div>
+                <div class="game-content">
+                    <h3>Battle Legends</h3>
+                    <p>Epic multiplayer battles in a fantasy world. Team up and conquer your enemies!</p>
+                    <div class="game-meta">
+                        <span class="game-genre">Action</span>
+                        <button class="play-button">Play Now</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="game-card">
+                <div class="game-image">🧩</div>
+                <div class="game-content">
+                    <h3>Puzzle Master</h3>
+                    <p>Challenge your mind with hundreds of brain-teasing puzzles and riddles.</p>
+                    <div class="game-meta">
+                        <span class="game-genre">Puzzle</span>
+                        <button class="play-button">Play Now</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="game-card">
+                <div class="game-image">🚀</div>
+                <div class="game-content">
+                    <h3>Space Explorer</h3>
+                    <p>Explore the vast universe, discover new planets, and build your space empire.</p>
+                    <div class="game-meta">
+                        <span class="game-genre">Adventure</span>
+                        <button class="play-button">Play Now</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="game-card">
+                <div class="game-image">⚽</div>
+                <div class="game-content">
+                    <h3>Soccer Champions</h3>
+                    <p>Lead your team to victory in the most realistic soccer simulation game.</p>
+                    <div class="game-meta">
+                        <span class="game-genre">Sports</span>
+                        <button class="play-button">Play Now</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="game-card">
+                <div class="game-image">🎯</div>
+                <div class="game-content">
+                    <h3>Sniper Elite</h3>
+                    <p>Test your precision and strategy in intense tactical shooter missions.</p>
+                    <div class="game-meta">
+                        <span class="game-genre">Shooter</span>
+                        <button class="play-button">Play Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-number">10M+</div>
+                <div class="stat-label">Active Players</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">500+</div>
+                <div class="stat-label">Games Available</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">24/7</div>
+                <div class="stat-label">Online Support</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">150+</div>
+                <div class="stat-label">Countries</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">Why Choose GameZone?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎮</div>
+                    <h3>Massive Game Library</h3>
+                    <p>Access over 500 games across all genres. New titles added weekly!</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">👥</div>
+                    <h3>Global Community</h3>
+                    <p>Connect with millions of gamers worldwide. Make friends and compete together.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🏆</div>
+                    <h3>Tournaments & Prizes</h3>
+                    <p>Participate in daily tournaments and win amazing prizes and rewards.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Lightning Fast</h3>
+                    <p>Optimized servers ensure smooth gameplay with minimal lag.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Secure Platform</h3>
+                    <p>Your data and privacy are protected with enterprise-grade security.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Cross-Platform</h3>
+                    <p>Play on any device - PC, mobile, or tablet. Your progress syncs everywhere.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="community" class="container">
+        <h2 class="section-title">Join Our Community</h2>
+        <p style="text-align: center; font-size: 1.3rem; color: #b8c1ec; margin-bottom: 3rem;">
+            Connect with fellow gamers, share strategies, and stay updated with the latest gaming news!
+        </p>
+        <div style="text-align: center;">
+            <a href="#" class="cta-button">Join Discord Server</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="#">📘</a>
+                <a href="#">🐦</a>
+                <a href="#">📷</a>
+                <a href="#">💬</a>
+                <a href="#">🎥</a>
+            </div>
+            <p style="color: #b8c1ec; margin: 1rem 0;">&copy; 2025 GameZone. All rights reserved.</p>
+            <p style="color: #ff6b35; font-weight: bold;">Level Up Your Gaming Experience</p>
+        </div>
+    </footer>
+</body>
+</html>
